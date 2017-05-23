@@ -1,0 +1,7 @@
+orders.csv: Each order describes a time some use bought a set of products. This file provides metadata for each order (including when the order was placed, by who, what time of day, etc ....). Looking at the setup, this file seems to be the domain X (i.e. given some order metadata f(x) -> the products that will we reordered during that order)
+
+order_products__*.csv: The order products file is an association between orders and the products that are in the order. Once again the problem here can be described as "given the prior order metadata -> products that were reordered, predict the products that will be reordered in these new orders". We have the training data for new orders in order_products__train.csv but only the metadata for the test orders
+
+product/aisle/department.csv: For all purposes, aisle and department are only used to classify products. I'm guessing you can use the aisle and department to cluster the different products that are available to find relationtions in their patterns but for a baseline evaluation, you technically dont need the aisle and department.
+
+So in summation: Given Order = {userid, order_dow, days_since_last, order_hour} For List O, F(O) = P (the products reordered on order O) Then for a set of Orders O', predict F(O')
